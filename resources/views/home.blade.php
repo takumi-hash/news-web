@@ -17,6 +17,13 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+            @foreach($news as $data)
+                <div class="card">
+                    <div class="card-body">
+                            {{ $data['name'] }}
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </div>
