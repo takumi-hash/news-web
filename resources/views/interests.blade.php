@@ -19,6 +19,7 @@
                 </div>
             </div>
             @endauth
+            <h1>Interests</h1>
             @foreach($news as $data)
             <div class="card mb-3">
                 <div class="row g-0">

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0d6efd">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -22,6 +23,7 @@
     <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
     <link rel="apple-touch-icon" href="{{ asset('/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('/android-chrome-192x192.png') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -87,7 +89,7 @@
         </main>
         <ul class="nav nav-pills justify-content-center fixed-bottom bg-white shadow-lg py-3 mb-3">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Feed</a>
+                <a class="nav-link" aria-current="page" href="/">Feed</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/interests">Interests</a>

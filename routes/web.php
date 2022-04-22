@@ -14,12 +14,11 @@ use App\Http\Controllers\NewsController;
 |
 */
 
+Auth::routes();
+
 Route::get('/', [NewsController::class, 'index']);
+Route::get('/interests', [NewsController::class, 'index_interests']);
+Route::get('/discover', [NewsController::class, 'index_discover']);
+Route::get('/saved', [NewsController::class, 'index_saved']);
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
