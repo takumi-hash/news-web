@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'NewsApp') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -78,6 +80,20 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <ul class="nav nav-pills justify-content-center fixed-bottom bg-white shadow-lg py-3">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Feed</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Recommended</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Interests</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Saved</a>
+            </li>
+        </ul>
     </div>
 </body>
 </html>
