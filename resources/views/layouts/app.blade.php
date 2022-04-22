@@ -90,13 +90,13 @@
                 <a class="nav-link active" aria-current="page" href="#">Feed</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Recommended</a>
+                <a class="nav-link" href="/interests">Interests</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Interests</a>
+                <a class="nav-link" href="/discover">Discover</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Saved</a>
+                <a class="nav-link" href="/saved" tabindex="-1" aria-disabled="true">Saved</a>
             </li>
         </ul>
     </div>
