@@ -18,6 +18,11 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- icons -->
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('/android-chrome-192x192.png') }}">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -80,7 +85,7 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <ul class="nav nav-pills justify-content-center fixed-bottom bg-white shadow-lg py-3">
+        <ul class="nav nav-pills justify-content-center fixed-bottom bg-white shadow-lg py-3 mb-3">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Feed</a>
             </li>
