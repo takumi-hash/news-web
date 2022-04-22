@@ -22,11 +22,23 @@ class NewsController extends Controller
 
             for ($idx = 0; $idx < $count; $idx++) {
                 array_push($news, [
-                    'name' => $response['articles'][$idx]['title'],
+                    'author' => $response['articles'][$idx]['author'],
+                    'title' => $response['articles'][$idx]['title'],
+                    'description' => $response['articles'][$idx]['description'],
                     'url' => $response['articles'][$idx]['url'],
-                    'thumbnail' => $response['articles'][$idx]['urlToImage'],
+                    'urlToImage' => $response['articles'][$idx]['urlToImage'],
+                    'publishedAt' => $response['articles'][$idx]['publishedAt'],
+                    'content' => $response['articles'][$idx]['content'],
+                    'source' => $response['articles'][$idx]['source']['name'],
                 ]);
             }
+
+            for ($idx = 0; $idx < $count; $idx++) {
+                $t = new \DateTime($news[$idx]['publishedAt']);
+                $t->setTimeZone(new \DateTimeZone('Asia/Tokyo'));
+                $news[$idx]['publishedAt'] = $t->format('Y/m/d H:i');
+            }
+
         } catch (RequestException $e) {
             //For handling exception
             echo Psr7\str($e->getRequest());
