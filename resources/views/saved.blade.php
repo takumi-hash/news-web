@@ -21,9 +21,17 @@
             @endauth
             <h1>Saved News</h1>
             <p>あなたが保存したニュースが表示されます。</p>
-            @unless (Auth::check())
-            <p>保存したニュースを表示するにはまずはログインしてください。</p>
-            @endunless
+            @guest
+            <p>保存したニュースを表示するにはまずは
+                @if (Route::has('login'))
+                    <a class="" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                @endif
+                @if (Route::has('register'))
+                    <!-- 会員登録 -->
+                @endif
+                してください。</p>
+            @else
+            @endguest
         </div>
     </div>
 </div>
