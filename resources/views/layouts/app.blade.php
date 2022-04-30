@@ -87,6 +87,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        @Auth
         <ul class="nav nav-pills justify-content-center fixed-bottom bg-white shadow-lg py-3 mb-3">
             <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="/">Feed</a>
@@ -101,6 +102,7 @@
                 <a class="nav-link" href="/saved" tabindex="-1" aria-disabled="true">Saved</a>
             </li>
         </ul>
+        @endauth
     </div>
 </body>
 </html>
