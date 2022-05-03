@@ -64,16 +64,17 @@ class User extends Authenticatable
         }
     }
 
-    public function is_on_table($news_url)
+    public function has_saved($news_id_or_url)
     {
-        $exists = $this->bookmarks()->where('url', $news_url)->exists();
-        return $exists;
-    }
+        if (is_numeric($news_id_or_url))
+        {
+            $exists = $this->bookmarks()->where('bookmarks.id', $news_id_or_url)->exists();
+            return $exists;
+        } else {
+            $exists = $this->bookmarks()->where('bookmarks.url', $news_id_or_url)->exists();
+            return $exists;
+        }
 
-    public function has_saved($news_id)
-    {
-        $exists = $this->bookmarks()->where('bookmarks.id', $news_id)->exists();
-        return $exists;
     }
 
     public function remove_bookmark($news_url)

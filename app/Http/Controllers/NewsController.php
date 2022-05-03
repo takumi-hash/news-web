@@ -13,7 +13,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $count = 10;
+        $count = 40;
 
         try {
             $client = new Client();
@@ -33,14 +33,13 @@ class NewsController extends Controller
                 echo Psr7\str($e->getResponse());
             }
         }
-
         return view('home', compact('news'));
     }
 
     public function index_interests()
     {
         $topic = "エルデンリング";
-        $count = 10;
+        $count = 40;
 
         try {
             $client = new Client();
@@ -64,7 +63,7 @@ class NewsController extends Controller
 
     public function index_discover()
     {
-        $count = 10;
+        $count = 40;
 
         try {
             $client = new Client();
