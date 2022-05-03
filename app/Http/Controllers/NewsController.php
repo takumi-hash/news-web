@@ -133,12 +133,4 @@ class NewsController extends Controller
 
         return view('discover', compact('news'));
     }
-
-    public function index_saved()
-    {
-        $UserId = '';
-        $count = 10;
-
-        return view('saved', compact('UserId'));
-    }
 }

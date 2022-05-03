@@ -42,4 +42,45 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function get_bookmarks()
+    {
+        return $this->belongsToMany(Bookmark::class)->withTimestamps();
+    }
+
+    public function save_bookmark($news_id)
+    {
+        // Is the user already "want"?
+        $exists = $this->has_saved($news_url);
+
+        if ($exists) {
+            // do nothing
+            return false;
+        } else {
+            // do "save"
+            $this->get_bookmarks()->attach($news_url);
+            return true;
+        }
+    }
+
+    public function has_saved($news_url)
+    {
+        $exists = $this->get_bookmarks()->where('url', $news_url)->exists();
+        return $exists;
+    }
+
+    public function remove_bookmark($news_url)
+    {
+        // Has the user already saved the url?
+        $exists = $this->has_saved($news_url);
+
+        if ($exists) {
+            // do remove
+            \DB::delete("DELETE FROM bookmark_user WHERE user_id = ? AND bookmark_id = ?", [$this->id, $news_url]);
+        } else {
+            // do nothing
+            return false;
+        }
+    }
+
 }

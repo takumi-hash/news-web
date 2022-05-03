@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\BookmarkController;
  
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,6 @@ Auth::routes();
 Route::get('/', [NewsController::class, 'index']);
 Route::get('/interests', [NewsController::class, 'index_interests']);
 Route::get('/discover', [NewsController::class, 'index_discover']);
-Route::get('/saved', [NewsController::class, 'index_saved']);
+Route::get('/saved', [BookmarkController::class, 'index']);
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

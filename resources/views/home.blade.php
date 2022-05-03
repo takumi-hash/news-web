@@ -6,7 +6,7 @@
         <div class="col-md-8">
             @auth
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Debug info') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
