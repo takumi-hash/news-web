@@ -21,5 +21,8 @@ Route::get('/', [NewsController::class, 'index']);
 Route::get('/interests', [NewsController::class, 'index_interests']);
 Route::get('/discover', [NewsController::class, 'index_discover']);
 Route::get('/saved', [BookmarkController::class, 'index']);
+Route::post('/saved', [BookmarkController::class, 'save'])->name('bookmark.save');
+Route::delete('/saved', [BookmarkController::class, 'remove'])->name('bookmark.delete');
+
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

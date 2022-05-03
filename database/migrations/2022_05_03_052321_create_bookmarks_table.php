@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('bookmarks', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
+            $table->string('url', 768)->unique();
             $table->string('title');
-            $table->string('urlToImage');
-            $table->string('author');
-            $table->string('publishedAt');
+            $table->text('urlToImage')->nullable();
+            $table->string('author')->nullable();
+            $table->datetime('publishedAt');
             $table->string('source');
             $table->timestamps();
         });

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\User;
 
 class User extends Authenticatable
 {
@@ -43,29 +44,35 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function get_bookmarks()
+    public function bookmarks()
     {
         return $this->belongsToMany(Bookmark::class)->withTimestamps();
     }
 
     public function save_bookmark($news_id)
     {
-        // Is the user already "want"?
-        $exists = $this->has_saved($news_url);
+        // User already has the bookmark?
+        $saved = $this->has_saved($news_id);
 
-        if ($exists) {
+        if ($saved) {
             // do nothing
             return false;
         } else {
             // do "save"
-            $this->get_bookmarks()->attach($news_url);
+            $this->bookmarks()->attach($news_id);
             return true;
         }
     }
 
-    public function has_saved($news_url)
+    public function is_on_table($news_url)
     {
-        $exists = $this->get_bookmarks()->where('url', $news_url)->exists();
+        $exists = $this->bookmarks()->where('url', $news_url)->exists();
+        return $exists;
+    }
+
+    public function has_saved($news_id)
+    {
+        $exists = $this->bookmarks()->where('bookmarks.id', $news_id)->exists();
         return $exists;
     }
 

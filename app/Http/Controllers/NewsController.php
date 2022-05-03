@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7;
+use App\Models\News;
+use App\Libs\SelfUtil;
 
 class NewsController extends Controller
 {
@@ -20,24 +22,9 @@ class NewsController extends Controller
 
             $news = [];
 
-            for ($idx = 0; $idx < $count; $idx++) {
-                array_push($news, [
-                    'author' => $response['articles'][$idx]['author'],
-                    'title' => $response['articles'][$idx]['title'],
-                    'description' => $response['articles'][$idx]['description'],
-                    'url' => $response['articles'][$idx]['url'],
-                    'urlToImage' => $response['articles'][$idx]['urlToImage'],
-                    'publishedAt' => $response['articles'][$idx]['publishedAt'],
-                    'content' => $response['articles'][$idx]['content'],
-                    'source' => $response['articles'][$idx]['source']['name'],
-                ]);
-            }
-
-            for ($idx = 0; $idx < $count; $idx++) {
-                $t = new \DateTime($news[$idx]['publishedAt']);
-                $t->setTimeZone(new \DateTimeZone('Asia/Tokyo'));
-                $news[$idx]['publishedAt'] = $t->format('Y/m/d H:i');
-            }
+            $news = [];
+            $selfUtil = new SelfUtil();
+            $news = $selfUtil->parse_news_response($response);
 
         } catch (RequestException $e) {
             //For handling exception
@@ -61,26 +48,9 @@ class NewsController extends Controller
             $response = json_decode($apiRequest->getBody()->getContents(), true);
 
             $news = [];
-
-            for ($idx = 0; $idx < $count; $idx++) {
-                array_push($news, [
-                    'author' => $response['articles'][$idx]['author'],
-                    'title' => $response['articles'][$idx]['title'],
-                    'description' => $response['articles'][$idx]['description'],
-                    'url' => $response['articles'][$idx]['url'],
-                    'urlToImage' => $response['articles'][$idx]['urlToImage'],
-                    'publishedAt' => $response['articles'][$idx]['publishedAt'],
-                    'content' => $response['articles'][$idx]['content'],
-                    'source' => $response['articles'][$idx]['source']['name'],
-                ]);
-            }
-
-            for ($idx = 0; $idx < $count; $idx++) {
-                $t = new \DateTime($news[$idx]['publishedAt']);
-                $t->setTimeZone(new \DateTimeZone('Asia/Tokyo'));
-                $news[$idx]['publishedAt'] = $t->format('Y/m/d H:i');
-            }
-
+            $selfUtil = new SelfUtil();
+            $news = $selfUtil->parse_news_response($response);
+            
         } catch (RequestException $e) {
             //For handling exception
             echo Psr7\str($e->getRequest());
@@ -103,25 +73,8 @@ class NewsController extends Controller
             $response = json_decode($apiRequest->getBody()->getContents(), true);
 
             $news = [];
-
-            for ($idx = 0; $idx < $count; $idx++) {
-                array_push($news, [
-                    'author' => $response['articles'][$idx]['author'],
-                    'title' => $response['articles'][$idx]['title'],
-                    'description' => $response['articles'][$idx]['description'],
-                    'url' => $response['articles'][$idx]['url'],
-                    'urlToImage' => $response['articles'][$idx]['urlToImage'],
-                    'publishedAt' => $response['articles'][$idx]['publishedAt'],
-                    'content' => $response['articles'][$idx]['content'],
-                    'source' => $response['articles'][$idx]['source']['name'],
-                ]);
-            }
-
-            for ($idx = 0; $idx < $count; $idx++) {
-                $t = new \DateTime($news[$idx]['publishedAt']);
-                $t->setTimeZone(new \DateTimeZone('Asia/Tokyo'));
-                $news[$idx]['publishedAt'] = $t->format('Y/m/d H:i');
-            }
+            $selfUtil = new SelfUtil();
+            $news = $selfUtil->parse_news_response($response);
 
         } catch (RequestException $e) {
             //For handling exception
@@ -133,4 +86,6 @@ class NewsController extends Controller
 
         return view('discover', compact('news'));
     }
+
 }
+
