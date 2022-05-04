@@ -16,6 +16,7 @@
                 @endif
                 してください。</p>
             @else
+            <bookmark-search-component></bookmark-search-component>
             @foreach($bookmarks as $bookmark)
                 <div class="card mb-3">
                     <div class="row g-0">

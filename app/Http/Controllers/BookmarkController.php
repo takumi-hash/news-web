@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Request as PostRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bookmark;
 
@@ -24,6 +25,22 @@ class BookmarkController extends Controller
             return view('saved', compact('bookmarks', 'user_id'));
         }
         return view('saved');
+    }
+
+    public function search(Request $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            $user_id = Auth::id();
+
+            if (!empty(PostRequest::input('title'))) {
+                $queryTitle = PostRequest::input('title');
+                return Bookmark::select('id', 'title')
+                        ->where('title', 'LIKE', "%$queryTitle%")
+                        ->limit(20)->get();
+            }
+        }
+        //return [];
     }
 
     public function save(Request $request){
