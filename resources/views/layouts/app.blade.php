@@ -86,35 +86,38 @@
 
         <main class="py-4">
             @yield('content')
+            @Auth
+            <div class="container fixed-bottom ">
+                <div class="row mytabbar justify-content-center bg-white shadow-lg pt-1 pb-3 mb-0 text-center fs-6">
+                    <div class="col-3">
+                        <a class="text-reset py-0 text-decoration-none" href="/">
+                            <i class="bi-newspaper" style="font-size: 1.3rem;"></i>
+                            <br>Feed
+                        </a>
+                    </div>
+                    <div class="col-3">
+                        <a class="text-reset py-0 text-decoration-none" href="/interests">
+                            <i class="bi-activity" style="font-size: 1.3rem;"></i>
+                            <br>Interests
+                        </a>
+                    </div>
+                    <div class="col-3">
+                        <a class="text-reset py-0 text-decoration-none" href="/discover">
+                            <i class="bi-binoculars" style="font-size: 1.3rem;"></i>
+                            <br>Discover
+                        </a>
+                    </div>
+                    <div class="col-3">
+                        <a class="text-reset py-0 text-decoration-none" href="/saved">
+                            <i class="bi-journal-bookmark" style="font-size: 1.3rem;"></i>
+                            <br>Bookmarks
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endauth
+
         </main>
-        @Auth
-        <ul class="nav nav-pills mytabbar justify-content-center fixed-bottom bg-white shadow-lg pt-1 pb-3 mb-0 text-center fs-6">
-            <li class="nav-item">
-                <a class="nav-link text-reset py-0" aria-current="page" href="/">
-                    <i class="bi-newspaper" style="font-size: 1.5rem;"></i>
-                    <br>Feed
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-reset py-0" href="/interests">
-                    <i class="bi-activity" style="font-size: 1.5rem;"></i>
-                    <br>Interests
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-reset py-0" href="/discover">
-                    <i class="bi-binoculars" style="font-size: 1.5rem;"></i>
-                    <br>Discover
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-reset py-0" href="/saved" tabindex="-1" aria-disabled="true">
-                    <i class="bi-journal-bookmark" style="font-size: 1.5rem;"></i>
-                    <br>Bookmarks
-                </a>
-            </li>
-        </ul>
-        @endauth
     </div>
 </body>
 </html>
