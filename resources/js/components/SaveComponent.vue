@@ -1,9 +1,9 @@
 <template>
     <button type="button" class="btn btn-success" v-if="btn_flg" @click.prevent="unsave(data)">
-        Unsave this
+        <i class="bi-bookmark-check-fill"></i>
     </button>
     <button type="button" class="btn btn-outline-primary" v-else @click.prevent="save(data)">
-        Save this
+        <i class="bi-bookmark"></i>
     </button>
 </template>
 <script>

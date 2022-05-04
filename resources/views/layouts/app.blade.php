@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#0d6efd">
+    <meta name="theme-color" content="#FFFFFF">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -86,23 +86,38 @@
 
         <main class="py-4">
             @yield('content')
+            @Auth
+            <div class="container fixed-bottom ">
+                <div class="row mytabbar justify-content-center bg-white shadow-lg pt-1 pb-3 mb-0 text-center fs-6">
+                    <div class="col-3">
+                        <a class="text-reset py-0 text-decoration-none" href="/">
+                            <i class="bi-newspaper" style="font-size: 1.3rem;"></i>
+                            <br>Feed
+                        </a>
+                    </div>
+                    <div class="col-3">
+                        <a class="text-reset py-0 text-decoration-none" href="/interests">
+                            <i class="bi-activity" style="font-size: 1.3rem;"></i>
+                            <br>Interests
+                        </a>
+                    </div>
+                    <div class="col-3">
+                        <a class="text-reset py-0 text-decoration-none" href="/discover">
+                            <i class="bi-binoculars" style="font-size: 1.3rem;"></i>
+                            <br>Discover
+                        </a>
+                    </div>
+                    <div class="col-3">
+                        <a class="text-reset py-0 text-decoration-none" href="/saved">
+                            <i class="bi-journal-bookmark" style="font-size: 1.3rem;"></i>
+                            <br>Bookmarks
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endauth
+
         </main>
-        @Auth
-        <ul class="nav nav-pills justify-content-center fixed-bottom bg-white shadow-lg py-3 mb-3">
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">Feed</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/interests">Interests</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/discover">Discover</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/saved" tabindex="-1" aria-disabled="true">Saved</a>
-            </li>
-        </ul>
-        @endauth
     </div>
 </body>
 </html>

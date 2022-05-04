@@ -1,7 +1,14 @@
 // Body
-$body-bg: #f8fafc;
+$body-bg: #fff; //#F5F8FA;
+$body-color: #363636;
+
+// Colors
+$primary: #2297F3;
 
 // Typography
+$font-family-serif: georgia,'Times New Roman', serif;
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+$card-border-radius: 0;
