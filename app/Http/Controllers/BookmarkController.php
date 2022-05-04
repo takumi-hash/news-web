@@ -35,9 +35,10 @@ class BookmarkController extends Controller
 
             if (!empty(PostRequest::input('title'))) {
                 $queryTitle = PostRequest::input('title');
-                return Bookmark::select('id', 'title')
-                        ->where('title', 'LIKE', "%$queryTitle%")
-                        ->limit(20)->get();
+                return $user->bookmarks()->where('title','LIKE',"%$queryTitle%")->limit(30)->get();
+                // return Bookmark::select('id', 'title')
+                //         ->where('title', 'LIKE', "%$queryTitle%")
+                //         ->limit(20)->get();
             }
         }
         //return [];
