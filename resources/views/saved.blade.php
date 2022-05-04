@@ -4,23 +4,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @auth
-            <div class="card">
-                <div class="card-header">{{ __('debug info') }}</div>
-                User id: {{ $user_id }}
-
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-            @endauth
             <h1>Saved News</h1>
             <p>あなたが保存したニュースが表示されます。</p>
             @guest
