@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Request as PostRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bookmark;
+use App\Libs\SelfUtil;
 
 
 class BookmarkController extends Controller
@@ -20,7 +21,8 @@ class BookmarkController extends Controller
             $limit = 100;
 
             $bookmark_count = $user->bookmarks()->count();
-            $bookmarks = \DB::table('bookmarks')->join('bookmark_user', 'bookmarks.id', '=', 'bookmark_user.bookmark_id')->select('bookmarks.*')->where('bookmark_user.user_id', $user->id)->distinct()->paginate($limit);
+            $bookmarks = $user->bookmarks()->get();
+            //$bookmarks = \DB::table('bookmarks')->join('bookmark_user', 'bookmarks.id', '=', 'bookmark_user.bookmark_id')->select('bookmarks.*')->where('bookmark_user.user_id', $user->id)->distinct()->paginate($limit);
 
             return view('saved', compact('bookmarks', 'user_id'));
         }

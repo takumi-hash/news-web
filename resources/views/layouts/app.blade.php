@@ -84,7 +84,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
             @Auth
             <div class="container fixed-bottom ">
@@ -110,7 +110,7 @@
                     <div class="col-3">
                         <a class="text-reset py-0 text-decoration-none" href="/saved">
                             <i class="bi-journal-bookmark" style="font-size: 1.3rem;"></i>
-                            <br>Bookmarks
+                            <br>Library
                         </a>
                     </div>
                 </div>

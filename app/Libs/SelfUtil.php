@@ -3,6 +3,8 @@
 namespace App\Libs;
 
 use App\Models\News;
+use App\Models\Bookmark;
+
 
 class SelfUtil
 {

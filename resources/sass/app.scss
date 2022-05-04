@@ -19,3 +19,14 @@ body {
 .mytabbar {
     color: $gray-700;
 }
+
+#carouselWithCaptions .carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    height: 40vh;
+}
+
+.carousel-item img {
+    filter: brightness(50%);
+}

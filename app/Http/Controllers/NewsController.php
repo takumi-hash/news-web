@@ -13,24 +13,22 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $count = 40;
+        $count = 15;
+        $news = [];
 
         try {
             $client = new Client();
             $apiRequest = $client->request('GET', config('newsapi.news_api_url') . 'top-headlines?country=jp&pageSize=' . $count.'&apiKey=' . config('newsapi.news_api_key'));
             $response = json_decode($apiRequest->getBody()->getContents(), true);
 
-            $news = [];
-
-            $news = [];
             $selfUtil = new SelfUtil();
             $news = $selfUtil->parse_news_response($response);
 
         } catch (RequestException $e) {
             //For handling exception
-            echo Psr7\str($e->getRequest());
+            echo Psr7\Message::toString($e->getRequest());
             if ($e->hasResponse()) {
-                echo Psr7\str($e->getResponse());
+                echo Psr7\Message::toString($e->getResponse());
             }
         }
         return view('home', compact('news'));
@@ -39,7 +37,7 @@ class NewsController extends Controller
     public function index_interests()
     {
         $topic = "エルデンリング";
-        $count = 40;
+        $count = 15;
 
         try {
             $client = new Client();
@@ -63,7 +61,7 @@ class NewsController extends Controller
 
     public function index_discover()
     {
-        $count = 40;
+        $count = 15;
 
         try {
             $client = new Client();

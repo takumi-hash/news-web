@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1>Saved News</h1>
+            <h1>Library</h1>
             <p>あなたが保存したニュースが表示されます。</p>
             @guest
             <p>保存したニュースを表示するにはまずは
@@ -16,6 +16,7 @@
                 @endif
                 してください。</p>
             @else
+            <h2>高速検索</h2>
             <bookmark-search-component></bookmark-search-component>
             @include('components.bookmarks', ['bookmarks' => $bookmarks])
             @endguest
