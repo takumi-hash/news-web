@@ -8,7 +8,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-    font: 100% $font-family-serif;
+    font: 100% $font-family-sans-serif;
 }
 
 .article {
@@ -27,6 +27,13 @@ body {
     height: 40vh;
 }
 
-.img-darken{
+img.img-darken{
     filter: brightness(50%);
+}
+
+img.bookmark-cover{
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    max-height: 40vh;
 }

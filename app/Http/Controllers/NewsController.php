@@ -38,21 +38,21 @@ class NewsController extends Controller
     {
         $topic = "エルデンリング";
         $count = 15;
+        $news = [];
 
         try {
             $client = new Client();
             $apiRequest = $client->request('GET', config('newsapi.news_api_url') . 'everything?q=' . $topic . '&searchIn=title,description&pageSize=' . $count.'&apiKey=' . config('newsapi.news_api_key'));
             $response = json_decode($apiRequest->getBody()->getContents(), true);
 
-            $news = [];
             $selfUtil = new SelfUtil();
             $news = $selfUtil->parse_news_response($response);
             
         } catch (RequestException $e) {
             //For handling exception
-            echo Psr7\str($e->getRequest());
+            echo Psr7\Message::toString($e->getRequest());
             if ($e->hasResponse()) {
-                echo Psr7\str($e->getResponse());
+                echo Psr7\Message::toString($e->getResponse());
             }
         }
 
@@ -62,6 +62,7 @@ class NewsController extends Controller
     public function index_discover()
     {
         $count = 15;
+        $news = [];
 
         try {
             $client = new Client();
@@ -69,15 +70,14 @@ class NewsController extends Controller
             $apiRequest = $client->request('GET', config('newsapi.news_api_url') . 'top-headlines?country=us&pageSize=' . $count.'&apiKey=' . config('newsapi.news_api_key'));
             $response = json_decode($apiRequest->getBody()->getContents(), true);
 
-            $news = [];
             $selfUtil = new SelfUtil();
             $news = $selfUtil->parse_news_response($response);
 
         } catch (RequestException $e) {
             //For handling exception
-            echo Psr7\str($e->getRequest());
+            echo Psr7\Message::toString($e->getRequest());
             if ($e->hasResponse()) {
-                echo Psr7\str($e->getResponse());
+                echo Psr7\Message::toString($e->getResponse());
             }
         }
 
