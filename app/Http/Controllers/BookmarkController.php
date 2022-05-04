@@ -43,17 +43,16 @@ class BookmarkController extends Controller
 
         Auth::user()->save_bookmark($bookmark->id);
 
-        return redirect()->back();
+        // return redirect()->back();
     }
 
-    public function remove()
+    public function remove(Request $request)
     {
-        $news_url = request()->url;
+        $news_url = $request->url;
+        var_dump($news_url);
 
-        if (Auth::user()->has_saved($news_url)) {
-            $bookmark_id = Bookmark::where('url', $news_url)->first()->id;
-            Auth::user()->remove_bookmark($bookmark_id);
-        }
-        return redirect()->back();
+        $bookmark_id = Bookmark::where('url', $news_url)->first()->id;
+        Auth::user()->remove_bookmark($bookmark_id);
+        //return redirect()->back();
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\BookmarkController;
- 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,8 +21,10 @@ Route::get('/', [NewsController::class, 'index']);
 Route::get('/interests', [NewsController::class, 'index_interests']);
 Route::get('/discover', [NewsController::class, 'index_discover']);
 Route::get('/saved', [BookmarkController::class, 'index']);
-Route::post('/saved', [BookmarkController::class, 'save'])->name('bookmark.save');
-Route::delete('/saved', [BookmarkController::class, 'remove'])->name('bookmark.delete');
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('/api/save', [BookmarkController::class, 'save'])->name('bookmark.save');
+    Route::post('/api/remove', [BookmarkController::class, 'remove'])->name('bookmark.delete');
+});
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

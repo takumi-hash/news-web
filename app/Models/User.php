@@ -49,42 +49,42 @@ class User extends Authenticatable
         return $this->belongsToMany(Bookmark::class)->withTimestamps();
     }
 
-    public function save_bookmark($news_id)
+    public function save_bookmark($bookmark_id)
     {
         // User already has the bookmark?
-        $saved = $this->has_saved($news_id);
+        $saved = $this->has_saved($bookmark_id);
 
         if ($saved) {
             // do nothing
             return false;
         } else {
             // do "save"
-            $this->bookmarks()->attach($news_id);
+            $this->bookmarks()->attach($bookmark_id);
             return true;
         }
     }
 
-    public function has_saved($news_id_or_url)
+    public function has_saved($bookmark_id_or_url)
     {
-        if (is_numeric($news_id_or_url))
+        if (is_numeric($bookmark_id_or_url))
         {
-            $exists = $this->bookmarks()->where('bookmarks.id', $news_id_or_url)->exists();
+            $exists = $this->bookmarks()->where('bookmarks.id', $bookmark_id_or_url)->exists();
             return $exists;
         } else {
-            $exists = $this->bookmarks()->where('bookmarks.url', $news_id_or_url)->exists();
+            $exists = $this->bookmarks()->where('bookmarks.url', $bookmark_id_or_url)->exists();
             return $exists;
         }
 
     }
 
-    public function remove_bookmark($news_url)
+    public function remove_bookmark($bookmark_id)
     {
         // Has the user already saved the url?
-        $exists = $this->has_saved($news_url);
+        $exists = $this->has_saved($bookmark_id);
 
         if ($exists) {
             // do remove
-            \DB::delete("DELETE FROM bookmark_user WHERE user_id = ? AND bookmark_id = ?", [$this->id, $news_url]);
+            \DB::delete("DELETE FROM bookmark_user WHERE user_id = ? AND bookmark_id = ?", [$this->id, $bookmark_id]);
         } else {
             // do nothing
             return false;

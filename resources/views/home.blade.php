@@ -49,6 +49,10 @@
                                         {!! Form::submit('Save this', ['class' => 'btn btn-outline-primary']) !!}
                                     {!! Form::close() !!}
                                 @endif
+
+                                <save-component :data="{{ $data }}" :has_saved="{{ Auth::user()->has_saved($data->url) ? 'true' : 'false' }}">
+                                </save-component>
+
                             @endauth
                         </div>
                     </div>
@@ -58,4 +62,5 @@
         </div>
     </div>
 </div>
+
 @endsection
