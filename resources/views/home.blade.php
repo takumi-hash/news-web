@@ -33,26 +33,8 @@
                                 <!-- p class="card-text fs-6">{{ $data->description }}</p -->
                             </a>
                             @auth
-                                @if (Auth::user()->has_saved($data->url))
-                                    {!! Form::open(['route' => 'bookmark.delete', 'method' => 'delete']) !!}
-                                        {!! Form::hidden('url', $data->url) !!}
-                                        {!! Form::submit('Saved', ['class' => 'btn btn-success']) !!}
-                                    {!! Form::close() !!}
-                                @else
-                                    {!! Form::open(['route' => 'bookmark.save', 'method' => 'post']) !!}
-                                        {!! Form::hidden('url', $data->url) !!}
-                                        {!! Form::hidden('title', $data->title) !!}
-                                        {!! Form::hidden('urlToImage', $data->urlToImage) !!}
-                                        {!! Form::hidden('author', $data->author) !!}
-                                        {!! Form::hidden('publishedAt', $data->publishedAt) !!}
-                                        {!! Form::hidden('source', $data->source) !!}
-                                        {!! Form::submit('Save this', ['class' => 'btn btn-outline-primary']) !!}
-                                    {!! Form::close() !!}
-                                @endif
-
                                 <save-component :data="{{ $data }}" :has_saved="{{ Auth::user()->has_saved($data->url) ? 'true' : 'false' }}">
                                 </save-component>
-
                             @endauth
                         </div>
                     </div>
