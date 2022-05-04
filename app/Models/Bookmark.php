@@ -15,12 +15,13 @@ class Bookmark extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'url',
-        'title',
-        'urlToImage',
         'author',
+        'description',
         'publishedAt',
         'source',
+        'title',
+        'url',
+        'urlToImage',
     ];
 
     /**

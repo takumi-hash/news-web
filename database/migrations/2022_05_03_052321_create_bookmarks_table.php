@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('urlToImage')->nullable();
             $table->string('author')->nullable();
+            $table->mediumtext('description')->nullable();
             $table->datetime('publishedAt');
             $table->string('source');
             $table->timestamps();
