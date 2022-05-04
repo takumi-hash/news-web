@@ -2,6 +2,7 @@ window._ = require('lodash');
 
 try {
     require('bootstrap');
+    require("bootstrap-icons/font/bootstrap-icons.css");
 } catch (e) {}
 
 /**

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#0d6efd">
+    <meta name="theme-color" content="#FFFFFF">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -88,18 +88,30 @@
             @yield('content')
         </main>
         @Auth
-        <ul class="nav nav-pills justify-content-center fixed-bottom bg-white shadow-lg py-3 mb-3">
+        <ul class="nav nav-pills mytabbar justify-content-center fixed-bottom bg-white shadow-lg pt-1 pb-3 mb-0 text-center fs-6">
             <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">Feed</a>
+                <a class="nav-link text-reset py-0" aria-current="page" href="/">
+                    <i class="bi-newspaper" style="font-size: 1.5rem;"></i>
+                    <br>Feed
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/interests">Interests</a>
+                <a class="nav-link text-reset py-0" href="/interests">
+                    <i class="bi-activity" style="font-size: 1.5rem;"></i>
+                    <br>Interests
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/discover">Discover</a>
+                <a class="nav-link text-reset py-0" href="/discover">
+                    <i class="bi-binoculars" style="font-size: 1.5rem;"></i>
+                    <br>Discover
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/saved" tabindex="-1" aria-disabled="true">Saved</a>
+                <a class="nav-link text-reset py-0" href="/saved" tabindex="-1" aria-disabled="true">
+                    <i class="bi-journal-bookmark" style="font-size: 1.5rem;"></i>
+                    <br>Bookmarks
+                </a>
             </li>
         </ul>
         @endauth

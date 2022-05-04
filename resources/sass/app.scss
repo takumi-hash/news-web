@@ -6,3 +6,17 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+body {
+    font: 100% $font-family-serif;
+    color: $body-color;
+}
+
+.article {
+    border-right: none;
+    border-left: none;
+}
+
+.mytabbar {
+    color: $gray-700;
+}
