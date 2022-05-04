@@ -1,6 +1,6 @@
 @foreach($bookmarks as $bookmark)
 <div class="card bg-dark text-white">
-    <img src="{{ $bookmark->urlToImage }}" class="card-img" alt="{{ $bookmark->title }}">
+    <img src="{{ $bookmark->urlToImage }}" class="card-img img-darken" alt="{{ $bookmark->title }}">
     <div class="card-img-overlay">
         <a href="{{ $bookmark->url }}" target="_blank" rel="noopener noreferrer" class="text-reset text-decoration-none ">
             <h5 class="card-title">{{ $bookmark->title }}</h5>

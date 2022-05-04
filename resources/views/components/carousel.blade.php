@@ -15,7 +15,7 @@
     @foreach($excerpt as $item)
       @if ($loop->first)
         <div class="carousel-item active">
-          <img src="{{ $item->urlToImage }}" class="d-block w-100" alt="...">
+          <img src="{{ $item->urlToImage }}" class="d-block w-100 img-darken" alt="...">
           <div class="carousel-caption d-block">
             <h5 class="small">{{ $item->title }}</h5>
             <p class="small">{{ \Str::limit($item->description,15); }}</p>
@@ -23,7 +23,7 @@
         </div>
       @else
         <div class="carousel-item">
-          <img src="{{ $item->urlToImage }}" class="d-block w-100" alt="...">
+          <img src="{{ $item->urlToImage }}" class="d-block w-100 img-darken" alt="...">
           <div class="carousel-caption d-block">
             <h5 class="small">{{ $item->title }}</h5>
             <p class="small">{{ \Str::limit($item->description,15); }}</p>

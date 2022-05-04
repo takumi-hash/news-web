@@ -11304,6 +11304,6 @@ body {
   height: 40vh;
 }
 
-.carousel-item img {
+.img-darken {
   filter: brightness(50%);
 }

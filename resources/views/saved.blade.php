@@ -16,7 +16,6 @@
                 @endif
                 してください。</p>
             @else
-            <h2>高速検索</h2>
             <bookmark-search-component></bookmark-search-component>
             @include('components.bookmarks', ['bookmarks' => $bookmarks])
             @endguest

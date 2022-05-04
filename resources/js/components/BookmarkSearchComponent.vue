@@ -1,6 +1,9 @@
 <template>
     <div>
-        <input type="text" v-model="keyword">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">高速検索</span>
+            <input type="text" class="form-control" v-model="keyword" aria-label="type to search" aria-describedby="inputGroup-sizing-default" autofocus>
+        </div>
         <div class="result-view">
             <ul>
                 <li v-for="bookmark in bookmarks" :key="bookmark.id">
