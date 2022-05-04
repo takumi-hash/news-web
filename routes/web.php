@@ -22,7 +22,10 @@ Route::get('/interests', [NewsController::class, 'index_interests']);
 Route::get('/discover', [NewsController::class, 'index_discover']);
 Route::get('/saved', [BookmarkController::class, 'index']);
 
+
+
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/api/search', [BookmarkController::class, 'search']);
     Route::post('/api/save', [BookmarkController::class, 'save'])->name('bookmark.save');
     Route::post('/api/remove', [BookmarkController::class, 'remove'])->name('bookmark.delete');
 });
