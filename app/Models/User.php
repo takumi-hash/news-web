@@ -48,6 +48,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Bookmark::class)->withTimestamps();
     }
+    public function interests()
+    {
+        return $this->belongsToMany(Interest::class)->withTimestamps();
+    }
 
     public function save_bookmark($bookmark_id)
     {

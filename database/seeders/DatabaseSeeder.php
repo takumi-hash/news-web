@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             BookmarkSeeder::class,
             BookmarkUserSeeder::class,
+            InterestSeeder::class,
+            InterestUserSeeder::class,
         ]);
     }
 }
