@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">高速検索</span>
-            <input type="text" class="form-control" v-model="keyword" aria-label="type to search" aria-describedby="inputGroup-sizing-default" autofocus>
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="bi-lightning-charge"></i></span>
+            <input type="text" class="form-control" v-model="keyword" aria-label="type to search" aria-describedby="inputGroup-sizing-default" placeholder="ブックマークを即時検索できます" autofocus>
         </div>
         <div class="result-view">
             <ul>
