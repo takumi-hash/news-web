@@ -23,7 +23,7 @@
         },
         methods: {
             search() {
-                axios.get('/api/search?title=' + this.keyword)
+                axios.get('/api/search?keywords=' + this.keyword)
                     .then(res => {
                         this.bookmarks = res.data;
                     })

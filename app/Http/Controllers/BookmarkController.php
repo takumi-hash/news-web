@@ -7,6 +7,7 @@ use Request as PostRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bookmark;
 use App\Libs\SelfUtil;
+use DB;
 
 
 class BookmarkController extends Controller
@@ -35,15 +36,36 @@ class BookmarkController extends Controller
             $user = Auth::user();
             $user_id = Auth::id();
 
-            if (!empty(PostRequest::input('title'))) {
-                $queryTitle = PostRequest::input('title');
-                return $user->bookmarks()->where('title','LIKE',"%$queryTitle%")->limit(30)->get();
-                // return Bookmark::select('id', 'title')
-                //         ->where('title', 'LIKE', "%$queryTitle%")
-                //         ->limit(20)->get();
+            // if (!empty(PostRequest::input('title'))) {
+            //     $queryTitle = PostRequest::input('title');
+            //     return $user->bookmarks()->where('title','LIKE',"%$queryTitle%")->limit(30)->get();
+            // }
+
+            if (!empty(PostRequest::input('keywords'))) {
+                // $queryTitle = PostRequest::input('keywords');
+                // return $user->bookmarks()->where('title','LIKE',"%$queryTitle%")->limit(30)->get();
+
+                $search_fields = ['title', 'description', 'source', 'author'];
+                $search_terms = explode(' ', PostRequest::input('keywords'));
+
+                $query = Bookmark::query();
+                foreach ($search_terms as $term) {
+                    $query->where(function ($query) use ($search_fields, $term) {
+                        foreach ($search_fields as $field) {
+                            $query->orWhere($field, 'LIKE', '%' . $term . '%');
+                        }
+                    })
+                    ->whereExists(function ($query) use ($user_id) {
+                        $query->select(DB::raw(999))
+                            ->from('bookmark_user')
+                            ->where('bookmark_user.user_id', $user_id)
+                            ->whereColumn('bookmark_user.bookmark_id', 'bookmarks.id');
+                    });
+                }
+                $filtered = $query->get();
+                return $filtered;
             }
         }
-        //return [];
     }
 
     public function save(Request $request){
