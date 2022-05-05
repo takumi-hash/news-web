@@ -11286,6 +11286,10 @@ body {
   font: 100% "Nunito", sans-serif;
 }
 
+.save-red {
+  color: #ff0018;
+}
+
 .article {
   border-right: none;
   border-left: none;

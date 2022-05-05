@@ -89,28 +89,28 @@
             @Auth
             <div class="container fixed-bottom ">
                 <div class="row mytabbar justify-content-center bg-white shadow-lg pt-1 pb-3 mb-0 text-center fs-6">
-                    <div class="col-3">
-                        <a class="text-reset py-0 text-decoration-none" href="/">
+                    <div class="col-3 px-1">
+                        <a class="text-reset py-0 text-decoration-none small" href="/">
                             <i class="bi-newspaper" style="font-size: 1.3rem;"></i>
-                            <br>Feed
+                            <br>ニュース
                         </a>
                     </div>
-                    <div class="col-3">
-                        <a class="text-reset py-0 text-decoration-none" href="/interests">
+                    <div class="col-3 px-1">
+                        <a class="text-reset py-0 text-decoration-none small" href="/interests">
                             <i class="bi-activity" style="font-size: 1.3rem;"></i>
-                            <br>Interests
+                            <br>フォロー
                         </a>
                     </div>
-                    <div class="col-3">
-                        <a class="text-reset py-0 text-decoration-none" href="/discover">
+                    <div class="col-3 px-1">
+                        <a class="text-reset py-0 text-decoration-none small" href="/discover">
                             <i class="bi-binoculars" style="font-size: 1.3rem;"></i>
-                            <br>Discover
+                            <br>ディスカバー
                         </a>
                     </div>
-                    <div class="col-3">
-                        <a class="text-reset py-0 text-decoration-none" href="/saved">
+                    <div class="col-3 px-1">
+                        <a class="text-reset py-0 text-decoration-none small" href="/saved">
                             <i class="bi-journal-bookmark" style="font-size: 1.3rem;"></i>
-                            <br>Library
+                            <br>ライブラリ
                         </a>
                     </div>
                 </div>

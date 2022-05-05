@@ -1,8 +1,8 @@
 <template>
-    <button type="button" class="btn btn-success" v-if="btn_flg" @click.prevent="unsave(data)">
-        <i class="bi-bookmark-check-fill"></i>
+    <button type="button" class="btn save-red" v-if="btn_flg" @click.prevent="unsave(data)">
+        <i class="bi-bookmark-check-fill fs-4"></i>
     </button>
-    <button type="button" class="btn btn-outline-primary" v-else @click.prevent="save(data)">
+    <button type="button" class="btn text-white fs-4" v-else @click.prevent="save(data)">
         <i class="bi-bookmark"></i>
     </button>
 </template>

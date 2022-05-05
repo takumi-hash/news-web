@@ -42,7 +42,7 @@ class NewsController extends Controller
 
         try {
             $client = new Client();
-            $apiRequest = $client->request('GET', config('newsapi.news_api_url') . 'everything?q=' . $topic . '&searchIn=title,description&pageSize=' . $count.'&apiKey=' . config('newsapi.news_api_key'));
+        $apiRequest = $client->request('GET', config('newsapi.news_api_url') . 'everything?q=' . $topic . '&searchIn=title,description&pageSize=' . $count.'&apiKey=' . "API_KEY"/*config('newsapi.news_api_key')*/);
             $response = json_decode($apiRequest->getBody()->getContents(), true);
 
             $selfUtil = new SelfUtil();
