@@ -1,6 +1,6 @@
 @foreach($items as $item)
 <div class="card bg-dark text-white">
-    <img src="{{ $item->urlToImage }}" class="card-img" alt="{{ $item->title }}">
+    <img src="{{ $item->urlToImage }}" class="card-img img-darken" alt="{{ $item->title }}">
     <div class="card-img-overlay">
         <a href="{{ $item->url }}" target="_blank" rel="noopener noreferrer" class="text-reset text-decoration-none ">
             <h5 class="card-title">{{ $item->title }}</h5>

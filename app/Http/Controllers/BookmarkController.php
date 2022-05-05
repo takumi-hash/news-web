@@ -21,7 +21,7 @@ class BookmarkController extends Controller
             $limit = 100;
 
             $bookmark_count = $user->bookmarks()->count();
-            $bookmarks = $user->bookmarks()->get();
+            $bookmarks = $user->bookmarks()->orderBy('publishedAt', 'desc')->get();
             //$bookmarks = \DB::table('bookmarks')->join('bookmark_user', 'bookmarks.id', '=', 'bookmark_user.bookmark_id')->select('bookmarks.*')->where('bookmark_user.user_id', $user->id)->distinct()->paginate($limit);
 
             return view('saved', compact('bookmarks', 'user_id'));
