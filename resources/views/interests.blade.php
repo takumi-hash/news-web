@@ -13,11 +13,11 @@
         </div>
         <div class="col-md-8">
             <h1>あなたが興味を持ちそうなWikipediaの記事</h1>
-            @include('components.news', ['items' => $news])
+            @include('components.news', ['news' => $articles])
         </div>
         <div class="col-md-8">
             <h1>あなたが興味を持ちそうなニュース</h1>
-            @include('components.news', ['items' => $news])
+            @include('components.news', ['news' => $news])
         </div>
     </div>
 </div>
