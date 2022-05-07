@@ -36,6 +36,8 @@ class SelfUtil
                     'safeSearch' => 'Off',
                     'textFormat' => 'Raw',
                     'count' => 100,
+                    'mkt' => 'ja-JP',
+	                'setLang' => 'JA',
                 ],
                 'headers' => [
                     'X-BingApis-SDK' => 'true',
@@ -91,6 +93,8 @@ class SelfUtil
                     'originalImg' => 'true', 
                     'safeSearch' => 'Off',
                     'textFormat' => 'Raw',
+                    'mkt' => 'ja-JP',
+	                'setLang' => 'JA',
                 ],
                 'headers' => [
                     'X-BingApis-SDK' => 'true',
