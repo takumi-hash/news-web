@@ -17,7 +17,9 @@
                     @endauth                
                 </div>
             </div>
-            <p class="card-body wikipedia-card-description">{{ \Str::limit($item->description, 150)."..." }}</p>
+            <a href="{{ $item->url }}" target="_blank" rel="noopener noreferrer" class="text-reset text-decoration-none ">
+                <p class="card-body wikipedia-card-description">{{ \Str::limit($item->description, 150)."..." }}</p>
+            </a>
         </div>
     </div>
 </div>

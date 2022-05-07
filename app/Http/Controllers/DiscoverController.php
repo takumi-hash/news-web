@@ -3,6 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7;
+
+use App\Models\Bookmark;
+use App\Models\Interest;
+use App\Libs\SelfUtil;
+use DB;
 
 class DiscoverController extends Controller
 {
@@ -33,6 +42,6 @@ class DiscoverController extends Controller
 
             return view('discover', compact('news'));
         }
-        return view('interests');
+        return view('discover');
     }
 }

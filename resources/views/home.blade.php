@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+
+@guest
+    <p>テスト環境です。テストアカウントで<a class="" href="{{ route('login') }}">{{ __('ログイン') }}</a>してください。</p>
+@endguest
+
+@auth
+
+    @php
+        $formatted_date = Carbon\Carbon::now();
+    @endphp
+
+    {{ $formatted_date->toFormattedDateString();  }}
+
 @include('components.carousel', ['items' => $carousel])
 <div class="container my-4">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -86,4 +99,5 @@
         </div>
     </div>
 </div>
+@endauth    
 @endsection
