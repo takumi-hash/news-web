@@ -23,7 +23,7 @@ class BookmarkSeeder extends Seeder
         try {
             $selfUtil = new SelfUtil();
 
-            $news_technology = $selfUtil->get_bingnews_api_by_category('ScienceAndTechnology');
+            $news_technology = $selfUtil->get_bingnews_api_by_query('テクノロジー OR 経済 OR ロシア');
 
         } catch (RequestException $e) {
             echo Psr7\Message::toString($e->getRequest());

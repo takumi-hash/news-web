@@ -19,7 +19,7 @@ class BookmarkUserSeeder extends Seeder
     public function run()
     {
         foreach (Bookmark::all() as $bookmark) {
-            if(rand()>.05)
+            if(true)
             {
                 DB::table('bookmark_user')->insert([
                     'user_id' => 1,
