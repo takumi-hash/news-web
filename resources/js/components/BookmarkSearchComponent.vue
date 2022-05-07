@@ -6,8 +6,10 @@
         </div>
         <div class="result-view">
             <ul>
-                <li v-for="bookmark in bookmarks" :key="bookmark.id">
-                    {{ bookmark.title }}
+                <li v-for="bookmark in bookmarks" :key="bookmark.id" class="py-2">
+                    <a :href="bookmark.url" class="text-decoration-none text-reset">{{ bookmark.title }}
+                        <br>&mdash;<span class="text-muted small">{{ bookmark.publishedAt }}</span>
+                    </a>
                 </li>
             </ul>
         </div>

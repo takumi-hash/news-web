@@ -17,7 +17,8 @@ use App\Http\Controllers\BookmarkController;
 |
 */
 
-Auth::routes();
+//Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/', [NewsController::class, 'index']);
 Route::get('/interests', [InterestController::class, 'index']);
