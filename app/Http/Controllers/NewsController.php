@@ -28,10 +28,10 @@ class NewsController extends Controller
                 $carousel = array_slice($selfUtil->get_bingnews_api_by_category('Business'), 0, 5);
                 $news_business = array_slice($selfUtil->get_bingnews_api_by_category('Business'),5);
 
-                usleep(500);
+                usleep(1000);
                 $news_technology = $selfUtil->get_bingnews_api_by_category('ScienceAndTechnology');
 
-                usleep(500);
+                usleep(1000);
                 $news_world = $selfUtil->get_bingnews_api_by_category('World');
 
             } catch (RequestException $e) {
