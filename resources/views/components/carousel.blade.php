@@ -15,21 +15,19 @@
     @foreach($excerpt as $item)
       @if ($loop->first)
         <div class="carousel-item active">
-          <img src="{{ $item->urlToImage }}" class="d-block w-100 img-darken" alt="...">
-          <div class="carousel-caption d-block">
-            <h5 class="small">{{ $item->title }}</h5>
-            <p class="small">{{ \Str::limit($item->description,15); }}</p>
-          </div>
-        </div>
       @else
         <div class="carousel-item">
+      @endif
+        @empty($item->urlToImage)
+          <img src="{{ asset('images/bookmark_img_fallback.jpeg') }}" class="d-block w-100 img-darken" alt="...">
+        @else
           <img src="{{ $item->urlToImage }}" class="d-block w-100 img-darken" alt="...">
+        @endif        
           <div class="carousel-caption d-block">
             <h5 class="small">{{ $item->title }}</h5>
             <p class="small">{{ \Str::limit($item->description,15); }}</p>
           </div>
         </div>
-      @endif
     @endforeach
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselWithCaptions" data-bs-slide="prev">

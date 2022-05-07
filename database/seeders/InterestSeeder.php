@@ -16,13 +16,13 @@ class InterestSeeder extends Seeder
     public function run()
     {
         DB::table('interests')->insert([
-            'text' => 'bitcoin',
+            'text' => 'game',
         ]);
         DB::table('interests')->insert([
             'text' => 'elden ring',
         ]);
         DB::table('interests')->insert([
-            'text' => 'stocks',
+            'text' => 'UX',
         ]);
     }
 }

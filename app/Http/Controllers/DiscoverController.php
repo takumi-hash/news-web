@@ -30,7 +30,7 @@ class DiscoverController extends Controller
             //     $response = json_decode($apiRequest->getBody()->getContents(), true);
 
             //     $selfUtil = new SelfUtil();
-            //     $news = $selfUtil->parse_news_response($response);
+            //     $news = $selfUtil->parse_newsapi_response($response);
 
             // } catch (RequestException $e) {
             //     //For handling exception

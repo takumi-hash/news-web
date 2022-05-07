@@ -2,27 +2,124 @@
 
 namespace App\Libs;
 
+use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7;
+
 use App\Models\News;
 use App\Models\Bookmark;
 use App\Models\Interest;
 
 class SelfUtil
 {
-    public function parse_news_response($response)
+    public function get_bingnews_api_by_category($category)
     {
-        $news=[];
-        foreach ($response['articles'] as $item) {
+        // For Japan:
+        // Business
+        // Entertainment
+        // Japan
+        // LifeStyle
+        // Politics
+        // ScienceAndTechnology
+        // Sports
+        // World
+
+        $client = new Client();
+        $request = $client->request(
+            'GET',
+            config('rapidapi.rapid_api_url').'/news',
+            [
+                'query' => [
+                    'originalImg' => 'true', 
+                    'category' => $category,
+                    'safeSearch' => 'Off',
+                    'textFormat' => 'Raw',
+                    'count' => 100,
+                ],
+                'headers' => [
+                    'X-BingApis-SDK' => 'true',
+                    'X-RapidAPI-Host' => config('rapidapi.rapid_api_host'),
+                    'X-RapidAPI-Key' => config('rapidapi.rapid_api_key')
+                ]
+            ]
+        );
+
+        $response = json_decode($request->getBody()->getContents(), true);
+
+
+        $news = [];
+
+        foreach($response['value'] as $item){
             $article = new News();
             $article->url = $item['url'];
-            $article->title = $item['title'];
-            $article->urlToImage = $item['urlToImage'];
-            $article->author = $item['author'];
-            $article->description = $item['description'];
-            $article->content = $item['content'];
-            $article->publishedAt = $item['publishedAt'];
-            $article->source = $item['source']['name'];
+            $article->title = $item['name'];
 
-            $t = new \DateTime($item['publishedAt']);
+            if(array_key_exists('image', $item))
+            {
+                $article->urlToImage = rtrim($item['image']['thumbnail']['contentUrl'], '&pid=news');
+            } else {
+                $article->urlToImage = NULL;
+            }
+            
+            $article->author = NULL;
+            $article->description = $item['description'];
+            $article->source = $item['provider'][0]['name'];
+            $t = new \DateTime($item['datePublished']);
+            $t->setTimeZone(new \DateTimeZone('Asia/Tokyo'));
+            $article->publishedAt = $t->format('Y/m/d H:i');
+
+
+            $news[] = $article;
+        }
+        return $news;
+    }
+
+    public function get_bingnews_api_by_query($query)
+    {
+
+        $client = new Client();
+        $request = $client->request(
+            'GET',
+            config('rapidapi.rapid_api_url').'/news/search',
+            [
+                'query' => [
+                    'q' => $query,
+                    'count' => 100,
+                    'sortBy' => 'date',
+                    'freshness' => 'Week',
+                    'originalImg' => 'true', 
+                    'safeSearch' => 'Off',
+                    'textFormat' => 'Raw',
+                ],
+                'headers' => [
+                    'X-BingApis-SDK' => 'true',
+                    'X-RapidAPI-Host' => config('rapidapi.rapid_api_host'),
+                    'X-RapidAPI-Key' => config('rapidapi.rapid_api_key')
+                ]
+            ]
+        );
+
+        $response = json_decode($request->getBody()->getContents(), true);
+
+        $news = [];
+
+        foreach($response['value'] as $item){
+            $article = new News();
+            $article->url = $item['url'];
+            $article->title = $item['name'];
+
+            if(array_key_exists('image', $item))
+            {
+                $article->urlToImage = rtrim($item['image']['thumbnail']['contentUrl'], '&pid=news');
+            } else {
+                $article->urlToImage = NULL;
+            }
+            
+            $article->author = NULL;
+            $article->description = $item['description'];
+            $article->source = $item['provider'][0]['name'];
+            $t = new \DateTime($item['datePublished']);
             $t->setTimeZone(new \DateTimeZone('Asia/Tokyo'));
             $article->publishedAt = $t->format('Y/m/d H:i');
 

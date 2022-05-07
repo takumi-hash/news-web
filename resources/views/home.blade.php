@@ -56,7 +56,7 @@
             aria-controls="pills-market"
             aria-selected="false"
             >
-            Market
+            World
             </button>
         </li>
     </ul>
@@ -93,7 +93,7 @@
         >
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    @include('components.news', ['news' => $news_market])
+                    @include('components.news', ['news' => $news_world])
                 </div>
             </div>
         </div>
