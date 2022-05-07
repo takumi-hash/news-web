@@ -6,8 +6,8 @@
         <img src="{{ $item->urlToImage }}" class="card-img img-darken bookmark-cover" alt="{{ $item->title }}">
     @endif
 
-    <div class="card-img-overlay">
-        <div class="row">
+    <div class="card-img-overlay d-flex flex-column">
+        <div class="row mb-auto">
             <div class=col-10>
                 <p class="card-text fs-6"><small class="text-white-50">{{ $item->publishedAt }} from {{ $item->source }}</small></p>
             </div>

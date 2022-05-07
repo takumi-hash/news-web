@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/', [NewsController::class, 'index']);
 Route::get('/interests', [InterestController::class, 'index']);
-Route::get('/discover', [NewsController::class, 'index_discover']);
+Route::get('/discover', [NewsController::class, 'index']);
 Route::get('/saved', [BookmarkController::class, 'index']);
 
 

@@ -103,7 +103,7 @@
                     <div class="col-3 px-1">
                         <a class="text-reset py-0 text-decoration-none small" href="/interests">
                             <i class="bi-activity" style="font-size: 1.3rem;"></i>
-                            <br>フォロー
+                            <br>インタレスト
                         </a>
                     </div>
                     <div class="col-3 px-1">

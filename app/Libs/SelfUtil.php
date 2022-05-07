@@ -10,6 +10,7 @@ class SelfUtil
 {
     public function parse_news_response($response)
     {
+        $news=[];
         foreach ($response['articles'] as $item) {
             $article = new News();
             $article->url = $item['url'];
