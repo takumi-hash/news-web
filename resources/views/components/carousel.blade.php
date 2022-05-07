@@ -24,8 +24,8 @@
           <img src="{{ $item->urlToImage }}" class="d-block w-100 img-darken" alt="...">
         @endif        
           <div class="carousel-caption d-block">
-            <h5 class="small">{{ $item->title }}</h5>
-            <p class="small">{{ \Str::limit($item->description,15); }}</p>
+            <h5 class="small"><a href="{{ $item->url }}" class="text-decoration-none text-reset">{{ $item->title }}</a></h5>
+            <p class="small"><a href="{{ $item->url }}" class="text-decoration-none text-reset">{{ \Str::limit($item->description,15); }}</a></p>
           </div>
         </div>
     @endforeach
