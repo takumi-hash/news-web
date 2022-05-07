@@ -1,5 +1,5 @@
 @foreach($articles as $item)
-<div class="col-7">
+<div class="col-8">
     <div class="card bg-light wikipedia-card">
         <div class="d-flex flex-column">
             <div class="row card-body pb-0">

@@ -17,7 +17,7 @@ class NewsController extends Controller
         $carousel = [];
         $news_business = [];
         $news_technology = [];
-        $news_market = [];
+        $news_world = [];
 
         if(Auth::check())
         {

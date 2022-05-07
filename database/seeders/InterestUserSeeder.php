@@ -28,6 +28,14 @@ class InterestUserSeeder extends Seeder
             'interest_id' => 3,
         ]);
         DB::table('interest_user')->insert([
+            'user_id' => 1,
+            'interest_id' => 4,
+        ]);
+        DB::table('interest_user')->insert([
+            'user_id' => 1,
+            'interest_id' => 5,
+        ]);
+        DB::table('interest_user')->insert([
             'user_id' => 2,
             'interest_id' => 1,
         ]);        DB::table('interest_user')->insert([
